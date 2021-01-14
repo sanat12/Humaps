@@ -1,149 +1,10 @@
 import React from 'react';
-import './table.css'
-import { Table, Tag, Space } from 'antd';
+import "./table.css";
+import {Table, Tag, Space } from 'antd';
+import {paginationfortable, tableprops} from './window.js';
+import {data} from './data.js';
 
-const data = [
-  {
-    key: '1',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '2',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '3',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '4',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '5',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '6',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '7',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '8',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '9',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '10',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '11',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '12',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '13',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '14',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '15',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    {
-    key: '16',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-    children:[
-        {
-    key: '15',
-    'industries': 'John Brown',
-    'categories':'whatever',
-    'contact': 'New York No. 1 Lake Park',
-    'cpcb':'yes',
-    'ganga':'yes',
-  },
-    ]
-  },
-];
-
-	const columns = [
+const columns = [
   {
     title: 'industries',
     dataIndex: 'industries',
@@ -171,6 +32,12 @@ const data = [
     key: 'ganga',
   },
   {
+   
+    render: () => (
+        <hr/>
+    ),
+  },
+  {
     title: 'Action',
     key: 'action',
    
@@ -182,6 +49,9 @@ const data = [
     ),
   },
 ];
+
+
+	
 function details(event){
 	console.log("details");
 }
@@ -189,11 +59,21 @@ function live(event){
 	console.log("live");
 }
 function Tableview(){
-	console.log(window.innerWidth);
-return(<Table columns={columns}
- dataSource={data} 
- pagination={{ pageSize: 10 }}
- scroll={{x:true}}
+
+return(<Table 
+filterDropdownVisible={true}
+columns={columns}
+dataSource={data} 
+size={tableprops.size}
+bordered={tableprops.bordered}
+pagination={
+  paginationfortable
+}
+filterDropdownVisible={true}
+defaultExpandAllRows={true}
+expandIconAsCell={true}
+expandIconColumnIndex={-1}
  />);
 }
+
 export default Tableview;
