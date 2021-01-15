@@ -17,11 +17,3 @@ thead[class*="ant-table-thead"] th{
     box-shadow: 0ch;
     
    }
-   .vl {
-    border-left: 2px solid black;
-    height: 102%;
-    position: absolute;
-    left: 50%;
-    margin-left: -3px;
-    top: 0;
-  }
