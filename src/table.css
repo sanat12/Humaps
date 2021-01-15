@@ -3,12 +3,25 @@ thead[class*="ant-table-thead"] th{
     font-size: large;
     color:aqua;
     background-color:white;
+    padding: 8px;
+    border-bottom: 0px solid black;
+    border-left: 0px solid black;
+    border-top: 0px solid black;
   }
-  div[class*="ant-table-bordered"] {
- 
-  
+  div[class*="ant-table-bordered"] td{
+    padding: 8px;
+    border-bottom: 0px solid black;
+    border-left: 0px solid black;
   }
   div[class*="ant-table-container"] {
     box-shadow: 0ch;
     
    }
+   .vl {
+    border-left: 2px solid black;
+    height: 102%;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+  }
