@@ -32,12 +32,6 @@ const columns = [
     key: 'ganga',
   },
   {
-   
-    render: () => (
-        <hr/>
-    ),
-  },
-  {
     title: 'Action',
     key: 'action',
    
