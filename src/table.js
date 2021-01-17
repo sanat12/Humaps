@@ -1,38 +1,45 @@
 import React from 'react';
-import "./table.css";
+//import 'antd/dist/antd.css';
+import './table.css'
 import {Table, Tag, Space } from 'antd';
-import {paginationfortable, tableprops} from './window.js';
+import {paginationfortable, tableprops,styleforcategory,styleforheader,
+  styleforindustry,styleforcontact,styleforcpcb,styleforganga} from './window.js';
 import {data} from './data.js';
 
 const columns = [
   {
-    title: 'industries',
+    title: <a >Industry</a>,
     dataIndex: 'industries',
     key: 'industries',
-    render: text => <a>{text}</a>,
+    render: text => <a style={styleforindustry}>{text}</a>,
   },
   {
-    title: 'Categories',
+    title: <a>Categories</a>,
     dataIndex: 'categories',
     key: 'categories',
+    render: text => <a style={styleforcategory}>{text}</a>,
   },
   {
-    title: 'contact details',
+    title: <a>Contact</a>,
     dataIndex: 'contact',
     key: 'contact',
+    render: text => <a style={styleforcontact}>{text}</a>,
   },
   {
-    title: 'CPCB Code',
+    title: <a>CPCB Code</a>,
     dataIndex: 'cpcb',
     key: 'cpcb',
+    render: text => <a style={styleforcpcb}>{text}</a>,
   },
     {
-    title: 'Ganga Basin Disposal',
+    title: <a>Ganga Basin</a>,
     dataIndex: 'ganga',
     key: 'ganga',
+    render: text => <a style={styleforganga}>{text}</a>,
   },
+
   {
-    title: 'Action',
+    title: <a>Action</a>,
     key: 'action',
    
     render: (text, record) => (
@@ -42,6 +49,7 @@ const columns = [
       </Space>
     ),
   },
+  
 ];
 
 
@@ -52,14 +60,15 @@ function details(event){
 function live(event){
 	console.log("live");
 }
-function Tableview(){
-
+class Tableview extends React.Component{
+render(){
 return(<Table 
 filterDropdownVisible={true}
 columns={columns}
+// style={tableprops}
 dataSource={data} 
 size={tableprops.size}
-bordered={tableprops.bordered}
+bordered={'true'}
 pagination={
   paginationfortable
 }
@@ -69,5 +78,5 @@ expandIconAsCell={true}
 expandIconColumnIndex={-1}
  />);
 }
-
+}
 export default Tableview;

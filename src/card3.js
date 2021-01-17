@@ -1,6 +1,7 @@
 import { List, Card,Space,Row,Col } from 'antd';
 import { paginationforview3} from './window.js';
 import {data} from './data.js';
+import 'antd/dist/antd.css';
 
 function details(event){
     console.log("details");
@@ -12,13 +13,12 @@ function live(event){
 const listData = [];
 let temp=[];
 for (let i = 0; i < data.length; i++) {
-    console.log(data[i])
+    //sconsole.log(data[i])
     temp.push(
-        <Row>
-
+        <Row align="center">
+            
             <Col span={8}>
-                <div class="card" align="right">
-                    <div class="card-body">
+                <Card type="inner">
                         <Row span={3}><h3 class="card-title" align="left">Industry</h3></Row>               
                         <Row span={3}><h3 class="card-title" align="left">Category</h3></Row>                 
                         <Row span={3}> <h3 class="card-title" align="left">Contact Details</h3></Row>
@@ -33,15 +33,13 @@ for (let i = 0; i < data.length; i++) {
                             </Space>    
                         </p>
                         </Row>            
-                    </div>
-               </div>
+               </Card>
             </Col>
 
             <Col span={8}></Col>
 
             <Col span={8}>
-                <div class="card" align="left">
-                    <div class="card-body">
+                    <Card type="inner">
 
                         <Row span={3}><p class="card-text" align="left">{data[i].industries} </p></Row>
                         <Row span={3}><p class="card-text" align="left">{data[i].categories} </p></Row>                    
@@ -57,8 +55,7 @@ for (let i = 0; i < data.length; i++) {
                             </Space>    
                         </p>   
                         </Row>         
-                    </div>
-                </div>
+                    </Card>
             </Col>
        
         </Row>

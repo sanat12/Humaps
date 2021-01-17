@@ -6,14 +6,13 @@ thead[class*="ant-table-thead"] th{
     padding: 8px;
     border-bottom: 0px solid black;
     border-left: 0px solid black;
-    border-top: 0px solid black;
+    border-top: 2px solid black;
   }
   div[class*="ant-table-bordered"] td{
     padding: 8px;
-    border-bottom: 0px solid black;
+    border-bottom: 2px solid black;
     border-left: 0px solid black;
   }
   div[class*="ant-table-container"] {
-    box-shadow: 0ch;
-    
+    box-shadow: 0ch;    
    }
