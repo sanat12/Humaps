@@ -1,6 +1,6 @@
 import React from 'react';
-//import 'antd/dist/antd.css';
-import './table.css'
+import 'antd/dist/antd.css';
+
 import {Table, Tag, Space } from 'antd';
 import {paginationfortable, tableprops,styleforcategory,styleforheader,
   styleforindustry,styleforcontact,styleforcpcb,styleforganga} from './window.js';
@@ -12,6 +12,7 @@ const columns = [
     dataIndex: 'industries',
     key: 'industries',
     render: text => <a style={styleforindustry}>{text}</a>,
+    sorter:true
   },
   {
     title: <a>Categories</a>,
@@ -73,6 +74,7 @@ pagination={
   paginationfortable
 }
 filterDropdownVisible={true}
+sorter={true}
 defaultExpandAllRows={true}
 expandIconAsCell={true}
 expandIconColumnIndex={-1}

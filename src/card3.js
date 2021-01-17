@@ -2,6 +2,7 @@ import { List, Card,Space,Row,Col } from 'antd';
 import { paginationforview3} from './window.js';
 import {data} from './data.js';
 import 'antd/dist/antd.css';
+import { AlignCenterOutlined } from '@ant-design/icons';
 
 function details(event){
     console.log("details");
@@ -9,77 +10,67 @@ function details(event){
 function live(event){
     console.log("live");
 }
-
+const gridStyle = {
+    width: '50%',
+    textAlign: 'left',
+  };
 const listData = [];
 let temp=[];
 for (let i = 0; i < data.length; i++) {
     //sconsole.log(data[i])
+    let keys=Object.keys(data[i])
+    let val=Object.values(data[i])
+    let item=[];
+    for(let i=1;i<keys.length;i++){
+        if(i==1){
+            item.push(
+                <Row>
+                    <Card.Grid style={gridStyle} hoverable={false}>
+                        <h3 align="left" style={{color:'black',fontStyle:'strong'}}>{keys[i]}</h3>
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} style={gridStyle} >
+                        <h3 style={{color:'orange',fontStyle:'strong'}}>{val[i]}</h3>
+                    </Card.Grid>
+                 </Row>            
+                );
+        }
+        else{
+            item.push(
+                <Row>
+                    <Card.Grid style={gridStyle} hoverable={false}>
+                        <h3 align="left" style={{color:'black',fontStyle:'strong'}}>{keys[i]}</h3>
+                    </Card.Grid>
+                    <Card.Grid hoverable={false} style={gridStyle} >
+                        <h3 style={{color:'black',fontStyle:'strong'}}>{val[i]}</h3>
+                    </Card.Grid>
+                 </Row>            
+                );
+        }
+
+    }
     temp.push(
-        <Row align="center">
-            
-            <Col span={8}>
-                <Card type="inner">
-                        <Row span={3}><h3 class="card-title" align="left">Industry</h3></Row>               
-                        <Row span={3}><h3 class="card-title" align="left">Category</h3></Row>                 
-                        <Row span={3}> <h3 class="card-title" align="left">Contact Details</h3></Row>
-                        <Row span={3}><h3 class="card-title" align="left">CPCB Code</h3></Row>
-                        <Row span={3}><h3 class="card-title" align="left">Ganga Basin Disposal</h3></Row>   
-                        <Row span={3}><h3 class="card-title" align="left">Actions</h3></Row>
-                        <Row span={3}>
-                        <p class="card-text" align="left">                    
-                            <Space size="middle" align="left">
-                                <a ></a>
-                                <a ></a>
-                            </Space>    
-                        </p>
-                        </Row>            
-               </Card>
-            </Col>
-
-            <Col span={8}></Col>
-
-            <Col span={8}>
-                    <Card type="inner">
-
-                        <Row span={3}><p class="card-text" align="left">{data[i].industries} </p></Row>
-                        <Row span={3}><p class="card-text" align="left">{data[i].categories} </p></Row>                    
-                        <Row span={3}><p class="card-text" align="left">{data[i].contact} </p></Row>
-                        <Row span={3}><p class="card-text" align="left">{data[i].cpcb} </p></Row>
-                        <Row span={3}><p class="card-text" align="left">{data[i].ganga} </p> </Row>   
-                        <br/>  
-                        <Row span={3}>
-                        <p class="card-text" align="left">                    
-                            <Space size="middle" align="left">
-                                <a onClick={details}>Details</a>
-                                <a onClick={live}>Live</a>
-                            </Space>    
-                        </p>   
-                        </Row>         
-                    </Card>
-            </Col>
-       
-        </Row>
-
+        <Card hoverable={true} >
+            {item}
+       </Card>,
           );     
 }       
 listData.push(...temp)
 function Card3(){
 return(
- <List>
+ <div style={{display: 'flex',  justifyContent:'center',alignItems:'center'}}>
     <List
     itemLayout="horizontal"
     size="large"
+    alignContent="middle"
     pagination={paginationforview3}
     dataSource={[...listData]}
     renderItem={item => (
-      <List.Item>
-        <Card>
+      <List.Item align="middle">
              {item}
-        </Card>
       </List.Item>
     )}
   />
-</List>
+</div>
   );
 
 }

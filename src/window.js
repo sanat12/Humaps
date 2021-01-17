@@ -24,11 +24,11 @@ export const paginationfortable={
     };
 export const paginationforview2={
     showSizeChanger: true,
+    showQuickJumper:true,
     pageSizeOptions: ["1", "14", "21", "28"],
-    defaultPageSize:10,
+    defaultPageSize:2,
     position: "top",
-    align:'center',
-    size:"large",
+    size:"default",
     showQuickJumper:true,
           onChange: page => {
     console.log(page);
@@ -37,9 +37,10 @@ export const paginationforview2={
 export const paginationforview3={
     showSizeChanger: true,
     pageSizeOptions: ["10", "20", "50"],
-    defaultPageSize:1,
+    defaultPageSize:2,
     position: "top",
     showQuickJumper:true,
+    size:'small',
     onChange: page => {
     console.log(page);
   },

@@ -18,7 +18,7 @@ let temp=[];
 for (let i = 0; i < data.length; i++) {
     console.log(data[0])
     temp.push(    
-            <Card type="inner" align="center" bodyStyle={{align:'center',marginLeft:'30%'}}>
+            <Card type="inner" align="center" >
                     <h3  align="left" >Industry</h3>
                     <p  align="left" style={{color:'orange'}}>{data[i].industries} </p>
                     <h3  align="left" >Category</h3>
@@ -45,8 +45,8 @@ for (let i = 0; i < data.length; i++) {
 class Card2 extends React.Component{
 render(){
   return(
-<div align="center">
- <List align="center">
+<div style={{display: 'flex',  justifyContent:'center',alignItems:'center'}}>
+ <List >
     <List
     itemLayout="vertical"
     size="large"
@@ -54,7 +54,7 @@ render(){
     dataSource={[...listData]}
     renderItem={item => (
       <List.Item>
-        <Card type="inner" bordered={true} hoverable={true} bodyStyle={{align:'center'}}>
+        <Card type="inner" hoverable={true} >
           {item}
         </Card>
       </List.Item>
