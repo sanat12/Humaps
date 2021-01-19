@@ -6,7 +6,6 @@ import { render } from "@testing-library/react";
 import {sorteddata} from './data.js';
 import {paginationforsort,sortbyoptions} from './window.js'
 import React from "react";
-
 const { Option } = Select;
 
 const datas= [
@@ -144,6 +143,7 @@ const datas= [
 
 // console.log(data[0].children.length)
 const children = [];
+
 for (let i = 0; i < datas.length; i++) {
   children.push(<Option key={datas[i].key}>{datas[i].Industry}</Option>);
 }
@@ -162,7 +162,7 @@ export default class Listview extends React.Component{
         index:'-1',
         key:0,
         order:1,
-        isModalVisible:false,
+        isModalVisible:false,        
     };
     this.test=[];
 }
@@ -179,9 +179,8 @@ export default class Listview extends React.Component{
     this.setState({isModalVisible:false});
   };  
 
-
-
- display=(value,data)=>{
+  
+display=(value,data)=>{
   // if(this.index=='-1'){
   //   console.log("sssssssss")
   //   return
@@ -242,9 +241,9 @@ export default class Listview extends React.Component{
   
   
               temp.push(
-                <Card type="outer">
+                <Card type="outer" bordered={false}>
                   {parentitems}
-                    <Card type="inner" >
+                    <Card type="inner" bordered={false}>
                       {childitems}
                    </Card>
                </Card>
@@ -265,8 +264,8 @@ export default class Listview extends React.Component{
               }
   
               temp.push(  
-                  <Card type="outer">       
-                      <Card type="inner" >
+                  <Card type="outer" bordered={false}>       
+                      <Card type="inner" bordered={false}>
                         {parentitems}
                      </Card>
                  </Card>
@@ -307,9 +306,9 @@ export default class Listview extends React.Component{
   
   
           temp.push(
-            <Card type="outer">
+            <Card type="outer" bordered={false}>
               {parentitems}
-                <Card type="inner" >
+                <Card type="inner" bordered={false}>
                   {childitems}
                </Card>
            </Card>
@@ -328,7 +327,7 @@ export default class Listview extends React.Component{
              let parentitems=[];
              let keys=Object.keys(data[value].children[i])
              let values=Object.values(data[value].children[i])
-             for(let i=3;i<keys.length-1;i++)
+             for(let i=2;i<keys.length-1;i++)
              {
                parentitems.push(
                  <span>
@@ -339,10 +338,10 @@ export default class Listview extends React.Component{
              }
   
              temp.push(
-                <Card type="outer">
+                <Card type="outer" bordered={false}>
                   <h4 align="left">Stack</h4>
                   <p align="left">{data[value].children[i].Stack}</p>
-                    <Card type="inner">
+                    <Card type="inner" bordered={false}>
                       {parentitems}
                    </Card>
               </Card>,
@@ -370,10 +369,10 @@ export default class Listview extends React.Component{
             )
           }
           temp.push(
-          <Card type="outer">
+          <Card type="outer" bordered={false}>
             <h4 align="left">{keys[1]}</h4>
             <p align="left">{values[1]}</p>
-              <Card type="inner">
+              <Card type="inner" bordered={false}>
                 {parentitems}
               </Card>
           </Card>
@@ -384,12 +383,11 @@ this.setState({array:[...temp]});
 };
 
 
-
-
  display1=(event,arr1)=>{
   // if(this.index=='-1'){
+   this.loop()
    this.setState({isModalVisible:false});
-    let array=arr1;
+  let array=arr1;
     //Dynamic sorting
     while(1){
       if(array[0]!==undefined && array[0][sortbyoptions[this.state.key]]!==undefined){
@@ -417,6 +415,16 @@ this.setState({array:[...temp]});
           array[i].children.sort((a,b) => 
           (a[sortbyoptions[this.state.key]] < b[sortbyoptions[this.state.key]]) ? 1 : ((b[sortbyoptions[this.state.key]] < a[sortbyoptions[this.state.key]]) ? -1 : 0));
         } 
+        if(this.state.order==1){
+          array.sort((a,b) => 
+           (a.children[0][sortbyoptions[this.state.key]] > b.children[0][sortbyoptions[this.state.key]]) ? 1 :
+            ((b.children[0][sortbyoptions[this.state.key]] > a.children[0][sortbyoptions[this.state.key]]) ? -1 : 0));
+         }
+         else{
+           array.sort((a,b) => 
+           (a.children[0][sortbyoptions[this.state.key]] < b.children[0][sortbyoptions[this.state.key]]) ? 1 : 
+           ((b.children[0][sortbyoptions[this.state.key]] < a.children[0][sortbyoptions[this.state.key]]) ? -1 : 0));
+         }              
        }
         break;
       }
@@ -483,9 +491,9 @@ this.setState({array:[...temp]});
                 }                
 
               temp.push(
-                <Card type="outer">
+                <Card type="outer" bordered={false}>
                   {parentitems}
-                    <Card type="inner" >
+                    <Card type="inner"  bordered={false}>
                       {childitems}
                    </Card>
                </Card>
@@ -506,8 +514,8 @@ this.setState({array:[...temp]});
               }
 
               temp.push(  
-                  <Card type="outer">       
-                      <Card type="inner" >
+                  <Card type="outer"  bordered={false}>       
+                      <Card type="inner"  bordered={false}>
                         {parentitems}
                      </Card>
                  </Card>
@@ -581,10 +589,10 @@ this.setState({array:[...temp]});
              }
 
              temp.push(
-                <Card type="outer">
+                <Card type="outer"  bordered={false}>
                   <h4 align="left">{keys[1]}</h4>
                   <p align="left">{values[1]}</p>
-                    <Card type="inner">
+                    <Card type="inner"  bordered={false}>
                       {parentitems}
                    </Card>
               </Card>,
@@ -615,10 +623,10 @@ this.setState({array:[...temp]});
             )
           }
           temp.push(
-          <Card type="outer" >
+          <Card type="outer"  bordered={false}>
             <h4 align="left">{keys[1]}</h4>
             <p align="left">{values[1]}</p>
-              <Card type="inner">
+              <Card type="inner"  bordered={false}>
                 {parentitems}
               </Card>
           </Card>
@@ -636,14 +644,14 @@ this.setState({array:[...temp]});
 loop=()=>{
   for(let i=0; i<sortbyoptions.length; i++){
     this.test.push(
-      <Card  title={sortbyoptions[i]}
+      <Card  type="inner" title={sortbyoptions[i]}
       extra={
         <span>
           <a onClick={(e)=>{this.setState({order:1});this.setState({key:i})}}><CaretUpOutlined style={{color:'orange'}}/></a>
           <br/>
           <a onClick={(e)=>{this.setState({order:0});this.setState({key:i})}}><CaretDownOutlined style={{color:'grey'}}/></a>
           </span>
-        }>
+        } bordered={false}>
       </Card>
     );
   }
@@ -655,31 +663,29 @@ render(){
   return(
     <div align="center">
       <div>
-        <div class='row' width='60%'>
-          <Select  style={{ width: '60%' }} placeholder={"Select Industry"} 
+          <Select  style={{ width: '30%' }} placeholder={"Select Industry"} 
           onSelect={(value) => { this.display(value, datas)}}
            tokenSeparators={[',']}>
             {children}
-          </Select>,
-        </div>
+          </Select>,        
       </div>
           <br/><br/>
 
-        <div class='row' width='60%'>
+        <div >
           <Button type="primary" 
           size="small" shape="round" style={{color:'white',background:'grey',borderColor:'grey'}}
           onClick={this.showModal}>SORT</Button>
         </div>
         <br/><br/>
-        <div align="center" styles={{marginLeft:'30%'}}>
+        <div style={{display: 'flex',  justifyContent:'center',alignItems:'center'}}>
         <List
-          bordered={true}
-          itemLayout="horizontal"
+          bordered={false}
+          itemLayout="vertical"
           pagination={paginationforsort}
           dataSource={[...this.state.array]}
           renderItem={item => (
           <List.Item>
-            <Card bodyStyle={{align:'center',marginLeft:'30%'}}>
+            <Card hoverable={true} bordered={false}>
             {item}
             </Card>
           </List.Item>
@@ -694,7 +700,7 @@ render(){
         footer={null}
         bodyStyle={{height:'100%'}}
         >
-          <Card >
+          <Card bordered={false} >
             <h2 align="center">SORT BY</h2>
              {this.test}
           </Card>
