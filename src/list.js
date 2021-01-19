@@ -152,7 +152,6 @@ for (let i = 0; i < datas.length; i++) {
 
 
 
-
 export default class Listview extends React.Component{
 
   constructor(props) {
@@ -162,9 +161,18 @@ export default class Listview extends React.Component{
         index:'-1',
         key:0,
         order:1,
-        isModalVisible:false,        
+        isModalVisible:false,
+        selectoptions:[  <Select style={{ width: '30%' }} placeholder={"Select Industry"} 
+        onSelect={(value) => { this.display(value, datas)}}
+         tokenSeparators={[',']}>
+          {children}
+          </Select>],
     };
     this.test=[];
+//     this.defaultselectoption=[];
+// defaultselectoption.push(
+
+// );
 }
 
  showModal = () => {
@@ -663,11 +671,7 @@ render(){
   return(
     <div align="center">
       <div>
-          <Select  style={{ width: '30%' }} placeholder={"Select Industry"} 
-          onSelect={(value) => { this.display(value, datas)}}
-           tokenSeparators={[',']}>
-            {children}
-          </Select>,        
+        {[...this.state.selectoptions]}    
       </div>
           <br/><br/>
 
